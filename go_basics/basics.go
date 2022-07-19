@@ -27,7 +27,7 @@ func main() {
 
 	// Arithmetic Operators
 
-	log.Println(23 / 2) // Reruens the quotient
+	log.Println(23 / 2) // Returns the quotient
 	log.Println(23 % 2) // Returns the Remainder
 
 }

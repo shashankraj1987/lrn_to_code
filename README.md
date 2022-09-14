@@ -1,2 +1,23 @@
 # Learn to Code
-Mega Repository of Different Programming  Languages Tutorials.
+
+## A Repository of Different Programming  Languages Tutorials.
+
+Contains the Following:
+
+### Python
+
+    . 100 Days of Coding
+    . Advanced Python
+    . Coursera (Code Obfuscation)
+    . DataCamp
+    . DataQuest
+    . Hackathons
+    . Python Full Stack
+    . Rest API Python
+    . TimeSeries
+    . Python Notes
+    . Regular Exptression
+
+### Go
+
+    . Basics of Go

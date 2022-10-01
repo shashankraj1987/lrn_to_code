@@ -228,3 +228,17 @@ Never make a paramter equal to a mutable value by default.
 ~~~
 
 _____________________________________________________________________________________=
+
+## Increase the recursion limit and string conversion limit
+
+If we are hitting a recursion limit or string conversion limit on recusion problems, 
+we can mitigate the same via the below commands
+
+~~~python
+    import sys
+    sys.set_int_max_str_digits(5000) ## This takes care of long output 
+    sys.setrecursionlimit(3000)       ## This takes care in case we want to increase recursion limit. 
+
+~~~
+
+_____________________________________________________________________________________=

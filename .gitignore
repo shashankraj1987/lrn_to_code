@@ -1,1 +1,25 @@
 .vscode
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+Web-Dev/pizza-menu/node_modules
+Web-Dev/pizza-menu/.pnp
+.pnp.js
+.VS
+
+# testing
+Web-Dev/pizza-menu/coverage
+
+# production
+Web-Dev/pizza-menu/build
+
+# misc
+Web-Dev/pizza-menu/.DS_Store
+Web-Dev/pizza-menu/.env.local
+Web-Dev/pizza-menu/.env.development.local
+Web-Dev/pizza-menu/.env.test.local
+Web-Dev/pizza-menu/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

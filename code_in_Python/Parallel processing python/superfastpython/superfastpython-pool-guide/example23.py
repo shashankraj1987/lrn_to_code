@@ -29,7 +29,7 @@ if __name__ == '__main__':
         # create and configure the process pool
         with Pool() as pool:
             # prepare arguments
-            items = [(i,event) for i in range(4)]
+            items = [(i,event) for i in range(10)]
             # issue tasks asynchronously
             result = pool.starmap_async(task, items)
             # wait a moment

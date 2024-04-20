@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sellers Page</title>
+</head>
+<body>
+    <h1>Sellers</h1>
+    <table id="sellerTable">
+        <thead>
+            <tr>
+                <th>Seller</th>
+            </tr>
+        </thead>
+        <tbody id="sellerTableBody">
+            <!-- Table rows will be added dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch the JSON data passed from the backend
+        const sellersJson = '{sellers}'; // This will be replaced by the actual JSON data
+
+        // Parse the JSON data
+        const sellersData = JSON.parse(sellersJson);
+
+        // Reference to the table body
+        const tableBody = document.getElementById('sellerTableBody');
+
+        // Loop through the sellers data and populate the table
+        sellersData.forEach(seller => {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.textContent = seller[0]; // Assuming the seller name is the first item in each tuple
+            row.appendChild(cell);
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>

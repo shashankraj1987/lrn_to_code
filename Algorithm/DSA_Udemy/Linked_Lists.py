@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.next = None
 
-class LinkedLists:
+class LinkedList:
     def __init__(self, value):
         self.Node = Node(value)
         self.head = self.Node
@@ -130,35 +130,113 @@ class LinkedLists:
         return tmp
 
     def reverse_linked_list(self):
-        pass
+        if self.length <= 1:
+            return
 
-my_linked_list = LinkedLists(1)
-my_linked_list.append_node(2)
-my_linked_list.append_node(3)
-my_linked_list.append_node(4)
-my_linked_list.append_node(5)
+        # Swap the Head and Tail.
+        tmp = self.head
+        self.head = self.tail
+        self.tail = tmp
 
-print('LL before remove():')
-print(my_linked_list.traverse_list())
+        # Reverse the list
+        before = None
+        after = tmp.next
+        while after is not None:
+            after = tmp.next
+            tmp.next = before
+            before = tmp
+            tmp = after
 
-print('\n1. Removed node:')
-print(my_linked_list.remove_value(2).value)
-print('LL after remove() in middle:')
-print(my_linked_list.traverse_list())
+    def find_middle_node(self):
+        """
+        Interview Question.
 
-print('\n2. Removed node:')
-print(my_linked_list.remove_value(0).value)
-print('LL after remove() of first node:')
-print(my_linked_list.traverse_list())
+        Assume that the Linked list has no length parameter.
+        Find the middle of the Linked list.
+        """
+        fast = self.head
+        slow = self.head
+        while (fast is not None) and (fast.next is not None):
+            slow = slow.next
+            fast = fast.next.next
+        return slow
 
-print('\n3. Removed node:')
-print(my_linked_list.remove_value(2).value)
-print('LL after remove() of last node:')
-print(my_linked_list.traverse_list())
+    def has_loop(self):
+        """
+        Interview Question.
+        Assume that the linked list has no length function.
+        Find if the linked list is a circular list.
+        """
+        slow = self.head
+        fast = self.head
 
-print('\n4. Removed node:')
-remove_ops = my_linked_list.remove_value(6)
-if remove_ops:
-    print(remove_ops.value)
-print('LL after remove() of last node:')
-print(my_linked_list.traverse_list())
+        while (fast.next is not None) and (fast.next.next is not None):
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+    def remove_duplicates(self):
+        """
+        You are given a singly linked list that contains integer values, where some of these values may be duplicated.
+        Note: this linked list class does NOT have a tail which will make this method easier to implement.
+        Your task is to implement a method called remove_duplicates() within the LinkedList class that removes all duplicate values from the list.
+        """
+        if self.head is None:
+            return None
+
+        start = 0
+        runner = self.head
+        elements = set()
+        elements.add(runner.value)
+
+        while runner.next is not None:
+            if runner.next.value not in elements:
+                elements.add(runner.next.value)
+                runner = runner.next
+                start += 1
+            else:
+                print("Duplicate found ", runner.next.value)
+                self.remove_value(start+1)
+        else:
+            return True
+
+
+def find_kth_from_end(ll: LinkedList, k: int) -> int | bool:
+    """
+    Implement the find_kth_from_end function, which takes the LinkedList (ll) and an integer k as input,
+    and returns the k-th node from the end of the linked list WITHOUT USING LENGTH.
+    """
+    if ll.head is None:
+        return None
+
+    first = ll.head
+    second = ll.head
+
+    # Move both pointers k steps ahead.
+    for _ in range(k-1):
+        second = second.next
+        if second is None:
+            return None
+
+    # Move both pointers one step at a time until the second pointer reaches the end of the linked list.
+    while second.next:
+        first = first.next
+        second = second.next
+    return first
+
+
+my_linked_list_1 = LinkedList(1)
+for x in range(2,10):
+    my_linked_list_1.append_node(x)
+my_linked_list_1.append_node(4)
+# for x in range(2,10):
+#     my_linked_list_1.append_node(x)
+
+print(my_linked_list_1.traverse_list())
+
+# print(find_kth_from_end(my_linked_list_1, 7).value)
+my_linked_list_1.remove_duplicates()
+
+print(my_linked_list_1.traverse_list())
